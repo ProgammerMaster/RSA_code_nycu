@@ -41,9 +41,10 @@ def egcd(a: int, b: int):
 if __name__ == '__main__':
     map_dic = {}
     n, e, msg = input().split()
-    msg = list(map(int, msg.split(',')))
     n = int(n)
     e = int(e)
+
+    msg = list(map(int, msg.split(',')))
 
     d = private_key(n, e)
     for i in msg:

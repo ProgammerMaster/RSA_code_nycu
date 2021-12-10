@@ -14,6 +14,7 @@ def modpow(base: int, exp: int, modulus: int) -> int:
 if __name__ == '__main__':
     map_dic = {}
     n, e, msg = input().split()
+
     msg = list(msg)
 
     ans = []
