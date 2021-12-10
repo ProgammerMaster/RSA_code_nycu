@@ -63,8 +63,5 @@ int main() {
         size--;
         (size == 0) ? cout << " " : cout << ",";
     }
-
-
-
     return 0;
 }
