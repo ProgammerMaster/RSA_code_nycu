@@ -1,8 +1,7 @@
 ﻿// RSA_encode.cpp 
-
+#pragma GCC optimize(3,"Ofast", "inline")
 #include <iostream>
 #include <string>
-#include <map>
 using namespace std;
 #define speed_up ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 #define ull unsigned long long
@@ -22,6 +21,7 @@ inline void mulmod(ull a, ull b, ull m, ull& res) {
         if (a & 1) {
             /* Add b to res, modulo m, without overflow */
             if (b >= m - res) { res -= m; }/* Equiv to if (res + b >= m), without overflow */
+
             res += b;
         }
         a >>= 1;
@@ -48,17 +48,18 @@ int main() {
     ull n, e;
     string m;
     cin >> n >> e >> m;
-    map<char, ull> encode_map;
+    //map<char, ull> encode_map;
+    ull map_arr[128] = { 0 };
     ull size = m.size(), change;
     for (auto& elme : m) {
-        auto find_map = encode_map.find(elme);
-        if (find_map == encode_map.end()) {
+        //auto find_map = encode_map.find(elme);
+        if (map_arr[elme] == 0) {
             modpow(elme, e, n, change);
-            encode_map[elme] = change;
+            map_arr[elme] = change;
             cout << change;
         }
         else {
-            cout << find_map->second;
+            cout << map_arr[elme];
         }
         size--;
         (size == 0) ? cout << " " : cout << ",";
